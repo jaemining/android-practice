@@ -44,4 +44,9 @@ public class MainActivity extends AppCompatActivity {
         // 3. 생성된 인텐트를 시스템에 넘겨서 실행
         startActivity(intent);
     }
+
+    public void openMe(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
