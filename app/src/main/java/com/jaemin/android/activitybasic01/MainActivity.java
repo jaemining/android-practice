@@ -1,6 +1,7 @@
 package com.jaemin.android.activitybasic01;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // 전화걸기
+    public void openCall(View v) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:114"));
+        startActivity(intent);
+    }
+
+    // 문자 보내기
+    public void openSMS(View v) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:01000000000"));
+        startActivity(intent);
+    }
+
+    // 네이버 열기
+    public void openNaver(View v) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://naver.com"));
+        startActivity(intent);
+    }
     // Activity를 호출하는 함수 - 버튼에서 호출하기 위해 파라미터로 View를 설정해야 한다.
     public void openActivity(View v) {
         // Activity를 호출하는 로직
