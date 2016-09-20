@@ -11,8 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="Activity4"
+        android:text="Activity 4"
         android:id="@+id/textView3"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
