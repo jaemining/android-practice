@@ -12,7 +12,27 @@
         android:layout_height="wrap_content"
         android:text="Activity 3"
         android:id="@+id/textView"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="118dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open activity4"
+        android:id="@+id/button6"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"/>
+        android:onClick="openActivity4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open activity5"
+        android:id="@+id/button7"
+        android:layout_below="@+id/button6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:onClick="openActivity5" />
 </RelativeLayout>
