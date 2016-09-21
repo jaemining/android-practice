@@ -10,7 +10,7 @@ import android.os.Bundle;
     2. AndroidManifest.xml의 application의 theme속성을 변경된 Theme으로 지(Default로 됨)
     3. Activity의 상속 클래스를 AppCompatActivity에서 Activity로 변경
 
-    // Api lever 21 미만에서 설정
+    // Api level 21 미만에서 설정(하지만 안됨..)
     1. 상속 받는 Activity를 원래대로 AppCompatActivity로 변경
     2. style의 AppTheme을 Theme.AppCompat으로 변경
  */
