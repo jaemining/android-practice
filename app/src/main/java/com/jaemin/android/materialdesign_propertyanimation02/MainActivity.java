@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         move(button4, button4.getWidth()/2, button4.getHeight()/2);
 
     }
-    public void move(View player, int x, int y) {
-        ObjectAnimator ani1 = ObjectAnimator.ofFloat(player, "translationX", x);
-        ObjectAnimator ani2 = ObjectAnimator.ofFloat(player, "translationY", y);
+    public void move(View btn, int x, int y) {
+        ObjectAnimator ani1 = ObjectAnimator.ofFloat(btn, "translationX", x);
+        ObjectAnimator ani2 = ObjectAnimator.ofFloat(btn, "translationY", y);
         AnimatorSet aniSet = new AnimatorSet();
         aniSet.playTogether(ani1, ani2);
         aniSet.start();
