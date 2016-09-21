@@ -13,7 +13,8 @@
         android:text="RunAlpha"
         android:id="@+id/button"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickAlpha" />
 
     <Button
         android:layout_width="wrap_content"
@@ -21,7 +22,8 @@
         android:text="RunRotate"
         android:id="@+id/btnRotate"
         android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickRotate" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,7 +31,8 @@
         android:text="RunScale"
         android:id="@+id/btnScale"
         android:layout_below="@+id/btnRotate"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickScale" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,5 +40,6 @@
         android:text="RunTranslate"
         android:id="@+id/btnTranslate"
         android:layout_below="@+id/btnScale"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickTranslate" />
 </RelativeLayout>
