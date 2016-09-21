@@ -88,7 +88,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Smaller"
-            android:id="@+id/btnSmaller" />
+            android:id="@+id/btnSmaller"
+            android:onClick="smaller" />
 
         <Button
             android:layout_width="wrap_content"

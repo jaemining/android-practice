@@ -1,5 +1,6 @@
 package com.jaemin.android.materialdesign_propertyanimation01;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -97,6 +98,18 @@ public class MainActivity extends AppCompatActivity {
         r = r + 90;
         ObjectAnimator ani = ObjectAnimator.ofFloat(player, "rotation", r);
         ani.start();
+    }
+
+    float scale_x = 1;
+    float scale_y = 1;
+    public void smaller(View v) {
+        scale_x = scale_x/2;
+        scale_y = scale_y/2;
+        ObjectAnimator ani1 = ObjectAnimator.ofFloat(player, "scaleX", scale_x);
+        ObjectAnimator ani2 = ObjectAnimator.ofFloat(player, "scaleY", scale_y);
+        AnimatorSet aniSet = new AnimatorSet();
+        aniSet.playTogether(ani1, ani2);
+        aniSet.start();
     }
 
     public void show(View v) {
