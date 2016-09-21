@@ -83,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    int r = 0;
+    public void rotate(View v) {
+        r = r + 90;
+        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "rotation", r);
+        ani.start();
+    }
+
     public void show(View v) {
         Toast.makeText(this, "I am Here ~", Toast.LENGTH_SHORT).show();
     }

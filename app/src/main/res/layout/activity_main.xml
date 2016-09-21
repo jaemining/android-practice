@@ -94,7 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rotate"
-            android:id="@+id/btnRotate" />
+            android:id="@+id/btnRotate"
+            android:onClick="rotate" />
 
         <Button
             android:layout_width="wrap_content"
