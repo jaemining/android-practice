@@ -11,7 +11,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton player;
-
+    int x = 0;
+    int y = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,22 +23,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void up(View v) {
-        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationY", -100);
+        y = y - 50;
+        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationY", y);
         ani.start();
     }
 
     public void down(View v) {
-        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationY", 100);
+        y = y + 50;
+        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationY", y);
         ani.start();
     }
 
     public void left(View v) {
-        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationX", -100);
+        x = x - 50;
+        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationX", x);
         ani.start();
     }
 
     public void right(View v) {
-        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationX", 100);
+        x = x + 50;
+        ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationX", x);
         ani.start();
     }
 
