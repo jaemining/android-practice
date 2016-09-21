@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         y = y - 50;
         if(-(gy/2) <= y) {
             ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationY", y);
+            ani.setDuration(1000);
             ani.start();
         } else {
             y = y + 50;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         y = y + 50;
         if((gy/2) >= y) {
             ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationY", y);
+            ani.setDuration(1000);
             ani.start();
         } else {
             y = y - 50;
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         x = x - 50;
         if(-(gx/2) <= x) {
             ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationX", x);
+            ani.setDuration(1000);
             ani.start();
         } else {
             x = x + 50;
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         x = x + 50;
         if(gx/2 >= x) {
             ObjectAnimator ani = ObjectAnimator.ofFloat(player, "translationX", x);
+            ani.setDuration(1000);
             ani.start();
         } else {
             x = x - 50;
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
     public void rotate(View v) {
         r = r + 90;
         ObjectAnimator ani = ObjectAnimator.ofFloat(player, "rotation", r);
+        ani.setDuration(1000);
         ani.start();
     }
 
@@ -113,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         AnimatorSet aniSet = new AnimatorSet();
         // 2. playTogether에 애니매이션을 담아준다
         aniSet.playTogether(ani1, ani2);
+        aniSet.setDuration(1000);
         // 3. 애니매이션을 실행한다
         aniSet.start();
     }
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         ObjectAnimator ani1 = ObjectAnimator.ofFloat(player, "scaleX", scale_x);
         ObjectAnimator ani2 = ObjectAnimator.ofFloat(player, "scaleY", scale_y);
         AnimatorSet aniSet = new AnimatorSet();
-        aniSet.setDuration(1000); // 동작 시간 설정 
+        aniSet.setDuration(1000); // 동작 시간 설정
         aniSet.playTogether(ani1, ani2);
         aniSet.start();
     }
