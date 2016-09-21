@@ -14,6 +14,11 @@ public class MainActivity extends AppCompatActivity {
     Button button2;
     Button button3;
     Button button4;
+    Button button5;
+    Button button6;
+    Button button7;
+    Button button8;
+    Button button9;
 
 
     @Override
@@ -26,15 +31,27 @@ public class MainActivity extends AppCompatActivity {
         button2 = (Button) findViewById(R.id.button2);
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
+        button5 = (Button) findViewById(R.id.button5);
+        button6 = (Button) findViewById(R.id.button6);
+        button7 = (Button) findViewById(R.id.button7);
+        button8 = (Button) findViewById(R.id.button8);
+        button9 = (Button) findViewById(R.id.button9);
+
     }
 
     boolean SPREADED = false;
     public void spread(View v) {
         if(!SPREADED) {
-            move(button1, button1.getWidth()/2*-1, button1.getHeight()/2*-1);
-            move(button2, button2.getWidth()/2, button2.getHeight()/2*-1);
-            move(button3, button3.getWidth()/2*-1, button3.getHeight()/2);
-            move(button4, button4.getWidth()/2, button4.getHeight()/2);
+            move(button1, button1.getWidth()*-1, button1.getHeight()*-1);
+            move(button2, 0, button2.getHeight()*-1);
+            move(button3, button3.getWidth(), button3.getHeight()*-1);
+            move(button4, button4.getWidth()*-1, 0);
+            move(button5, 0, 0);
+            move(button6, button4.getWidth(), 0);
+            move(button7, button4.getWidth()*-1, button4.getHeight());
+            move(button8, 0, button4.getHeight());
+            move(button9, button4.getWidth(), button4.getHeight());
+
             btnSpread.setText("Combine");
             SPREADED = true;
         } else {
@@ -49,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         move(button2, 0, 0);
         move(button3, 0, 0);
         move(button4, 0, 0);
+        move(button5, 0, 0);
+        move(button6, 0, 0);
+        move(button7, 0, 0);
+        move(button8, 0, 0);
+        move(button9, 0, 0);
     }
 
     public void move(View btn, int x, int y) {
