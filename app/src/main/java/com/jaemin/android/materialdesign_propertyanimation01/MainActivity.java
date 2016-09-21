@@ -9,6 +9,15 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+/*
+    ObjectAnimator 사용법
+    1. 애니매이터를 정의한다
+    ObjectAnimator ani = ObjectAnimator.ofFloat(대상개체, "개체의 속성", 속성값(숫자));
+
+    2. 정의된 애니매이터를 실행한다
+    ani.start()
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout ground;
