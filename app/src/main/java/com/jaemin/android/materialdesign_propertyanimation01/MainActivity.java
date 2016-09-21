@@ -4,12 +4,13 @@ import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    RelativeLayout ground;
     ImageButton player;
     int x = 0;
     int y = 0;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ground = (RelativeLayout) findViewById(R.id.ground);
         player = (ImageButton) findViewById(R.id.player);
     }
 
