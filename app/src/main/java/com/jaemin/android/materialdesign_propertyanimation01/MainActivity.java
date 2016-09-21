@@ -107,8 +107,13 @@ public class MainActivity extends AppCompatActivity {
         scale_y = scale_y/2;
         ObjectAnimator ani1 = ObjectAnimator.ofFloat(player, "scaleX", scale_x);
         ObjectAnimator ani2 = ObjectAnimator.ofFloat(player, "scaleY", scale_y);
+
+        // 여러개의 애니매이션 동시에 사용하기
+        // 1. AnimatorSet을 초기화 한다
         AnimatorSet aniSet = new AnimatorSet();
+        // 2. playTogether에 애니매이션을 담아준다
         aniSet.playTogether(ani1, ani2);
+        // 3. 애니매이션을 실행한다 
         aniSet.start();
     }
 
