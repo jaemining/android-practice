@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Up"
-            android:id="@+id/btnUp" />
+            android:id="@+id/btnUp"
+            android:onClick="up" />
     </LinearLayout>
 
     <RelativeLayout
@@ -28,16 +29,16 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="154dp"
-        android:layout_below="@+id/linearLayout">
+        android:layout_below="@+id/linearLayout2">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
+            android:id="@+id/player"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@android:drawable/sym_def_app_icon" />
+            android:src="@android:drawable/sym_def_app_icon"
+            android:onClick="show" />
 
     </RelativeLayout>
 
@@ -55,27 +56,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Left"
-            android:id="@+id/btnLeft" />
+            android:id="@+id/btnLeft"
+            android:onClick="left" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Down"
-            android:id="@+id/btnDown" />
+            android:id="@+id/btnDown"
+            android:onClick="down" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Right"
-            android:id="@+id/btnRight" />
+            android:id="@+id/btnRight"
+            android:onClick="right" />
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></LinearLayout>
 
 </RelativeLayout>
