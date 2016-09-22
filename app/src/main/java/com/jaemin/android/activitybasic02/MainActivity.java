@@ -24,6 +24,19 @@ public class MainActivity extends AppCompatActivity {
         String str = et.getText().toString();
         intent.putExtra("key1", str);
 
-        startActivity(intent);
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0) {
+            // 정상적으로 넘겨졌는지 flag 넘겨준다
+            if(resultCode==1) {
+                Bundle bundle = data.getExtras();
+                String result = bundle.getString("return1");
+                et.setText(result);
+            }
+        }
     }
 }
