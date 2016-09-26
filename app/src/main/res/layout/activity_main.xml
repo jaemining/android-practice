@@ -35,7 +35,8 @@
             android:layout_below="@+id/editText16"
             android:text="비밀번호"
             android:layout_toLeftOf="@+id/button8"
-            android:layout_toStartOf="@+id/button8" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="wrap_content"
