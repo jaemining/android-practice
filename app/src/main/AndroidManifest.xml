@@ -17,6 +17,10 @@
         </activity>
         <activity android:name=".Linear" >
         </activity>
+        <activity android:name=".Table" >
+        </activity>
+        <activity android:name=".Grid" >
+        </activity>
     </application>
 
 </manifest>
