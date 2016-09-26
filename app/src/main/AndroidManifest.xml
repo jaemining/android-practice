@@ -21,6 +21,10 @@
         </activity>
         <activity android:name=".Grid" >
         </activity>
+        <activity android:name=".LayoutCode" >
+        </activity>
+        <activity android:name=".DynamicGrid" >
+        </activity>
     </application>
 
 </manifest>

@@ -276,4 +276,21 @@
         android:layout_toStartOf="@+id/button11"
         android:text="2/3" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open LayoutCode"
+        android:id="@+id/btnOpen"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/button11"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open dynamicGridView"
+        android:id="@+id/buttonDynamic"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
