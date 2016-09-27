@@ -1,12 +1,18 @@
 package com.jaemin.android.basicwidget;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
     Switch sw;
 
     ToggleButton tb;
+
+    ProgressBar pb;
+    Switch sw2;
+
+    SeekBar sb;
+    TextView sb_tv;//seekBar의 값을 받는 View
+
+    RatingBar rb;
+    TextView rb_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +96,62 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        pb = (ProgressBar) findViewById(R.id.progressBar);
+        sw2 = (Switch) findViewById(R.id.switch2);
+
+        sw2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()) {
+                    pb.setVisibility(View.VISIBLE);
+                } else {
+                    pb.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        // activity_text
+        pb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TextActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sb = (SeekBar) findViewById(R.id.seekBar1);
+        sb_tv = (TextView) findViewById(R.id.sb_textView);
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sb_tv.setText(progress+"%");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(MainActivity.this, seekBar.getProgress()+"위치에서 터치가 시작됨", Toast.LENGTH_SHORT).show();
+                // 현재 위치값을 넘겨준다
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(MainActivity.this, seekBar.getProgress()+"위치에서 터치가 종료됨", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        rb = (RatingBar) findViewById(R.id.ratingBar1);
+        rb_tv = (TextView) findViewById(R.id.rb_textView);
+
+        rb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                rb_tv.setText(rating+"/5");
+            }
+        });
+
+
 
 
     }
