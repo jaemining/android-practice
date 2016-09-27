@@ -9,6 +9,21 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="300dp"
+            android:layout_marginEnd="300dp">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New RadioButton"
+                android:id="@+id/radioButton" />
+        </RadioGroup>
     </RelativeLayout>
 
 
