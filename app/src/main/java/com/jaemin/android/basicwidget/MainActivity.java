@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     CheckBox cb1;
     CheckBox cb2;
     CheckBox cb3;
+
+    Switch sw;
+
+    ToggleButton tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,30 @@ public class MainActivity extends AppCompatActivity {
         cb1.setOnCheckedChangeListener(checkedChangeListener);
         cb2.setOnCheckedChangeListener(checkedChangeListener);
         cb3.setOnCheckedChangeListener(checkedChangeListener);
+
+        sw = (Switch) findViewById(R.id.switch1);
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(buttonView.isChecked()) {
+                    tv.setText("Switch On");
+                } else {
+                    tv.setText("Switch Off");
+                }
+            }
+        });
+
+        tb = (ToggleButton) findViewById(R.id.toggleButton);
+        tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()) {
+                    tv.setText("ToggleButton On");
+                } else {
+                    tv.setText("ToggleButton Off");
+                }
+            }
+        });
 
 
     }
