@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pig"
-                android:id="@+id/checkBox2"
+                android:id="@+id/checkBoxPig"
                 android:checked="false" />
 
             <CheckBox
