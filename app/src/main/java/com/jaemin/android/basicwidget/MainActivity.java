@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView tv;// 결과값이 출력되는 텍스트뷰
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         pb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, TextActivity.class);
+                Intent intent = new Intent(MainActivity.this, TabActivity.class);
                 startActivity(intent);
             }
         });
