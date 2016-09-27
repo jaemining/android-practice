@@ -64,7 +64,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/textView2">
+            android:layout_below="@id/textView2"
+            android:id="@+id/checkboxLayout">
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -88,6 +89,40 @@
                 android:text="Chicken"
                 android:checked="false"
                 android:id="@+id/checkBoxChicken" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switch"
+            android:id="@+id/textView3"
+            android:layout_below="@id/checkboxLayout" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView3"
+            android:id="@+id/switchLayout">
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="on/off"
+                android:id="@+id/switch1"
+                android:checked="false" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Switch"
+                android:id="@+id/switch2"/>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Switch"
+                android:id="@+id/switch3"/>
+
         </LinearLayout>
 
 
