@@ -16,11 +16,18 @@
             android:text="Result"
             android:id="@+id/largeTextView" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/largeTextView"
+            android:text="Radio Button"
+            android:id="@+id/textView1"/>
+
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_below="@id/largeTextView"
+            android:layout_below="@id/textView1"
             android:id="@+id/radioGroup">
 
             <RadioButton
@@ -45,6 +52,43 @@
                 android:checked="false" />
 
         </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioGroup"
+            android:text="Check Box"
+            android:id="@+id/textView2" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView2">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dog"
+                android:id="@+id/checkBoxDog"
+                android:layout_below="@+id/radioGroup"
+                android:layout_centerHorizontal="true"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pig"
+                android:id="@+id/checkBox2"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chicken"
+                android:checked="false"
+                android:id="@+id/checkBoxChicken" />
+        </LinearLayout>
 
 
     </RelativeLayout>
