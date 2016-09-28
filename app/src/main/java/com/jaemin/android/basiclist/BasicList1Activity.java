@@ -18,7 +18,14 @@ public class BasicList1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_basic_list1);
 
         //                               1.컨텍스트         2. 아이템 레이아웃          3. 데이터
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, data);
+        /*
+            아이템 레이아웃 종류
+            - simple_list_item2 : 텍스트뷰 두 개로 구성
+            - simple_list_item_checked : 끝에 체크박스가 포함됨
+            - simple_list_item_single_choice : 끝에 라디오버튼 생성
+            - simple_list_item_multiple_choice : 끝에 체크박스가 생성
+         */
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
