@@ -23,6 +23,7 @@ public class CustomGridActivity extends AppCompatActivity {
         }
         GridView gridView = (GridView) findViewById(R.id.gridView2);
 
+
         CustomGridAdapter cga = new CustomGridAdapter(this, data, R.layout.activity_custom_grid_item);
         gridView.setAdapter(cga);
     }

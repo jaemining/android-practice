@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button5:
                 intent = new Intent(this, CustomGridActivity.class);
                 break;
+            case R.id.button6:
+                intent = new Intent(this, ExpandableActivity.class);
+                break;
         }
         startActivity(intent);
     }
