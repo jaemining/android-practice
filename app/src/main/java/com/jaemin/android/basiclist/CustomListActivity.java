@@ -55,6 +55,7 @@ class CustomAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) { // 자식뷰를 리턴해준다, position : 자식뷰의 순서, 1부터 시작한다
+
         return data.get(position);
     }
 
