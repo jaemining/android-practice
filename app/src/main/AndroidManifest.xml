@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".BasicList1Activity" >
         </activity>
+        <activity android:name=".BasicList2Activity" >
+        </activity>
     </application>
 
 </manifest>

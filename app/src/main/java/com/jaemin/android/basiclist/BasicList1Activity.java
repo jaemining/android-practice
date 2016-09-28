@@ -27,6 +27,8 @@ public class BasicList1Activity extends AppCompatActivity {
             - simple_list_item_multiple_choice : 끝에 체크박스가 생성
          */
         listView = (ListView) findViewById(R.id.listView);
+
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setAdapter(adapter);
 
     }
