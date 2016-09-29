@@ -1,11 +1,15 @@
 package com.jaemin.android.basiclist;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,10 +20,12 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
 
     ArrayList<RecyclerData> datas;
     int itemLayout;
+    Context context;
 
-    public RecyclerAnimationAdapter(ArrayList<RecyclerData> datas, int itemLayout) {
+    public RecyclerAnimationAdapter(ArrayList<RecyclerData> datas, int itemLayout, Context context) {
         this.datas = datas;
         this.itemLayout = itemLayout;
+        this.context = context; // 공통적인 context를 쓸 수 있게 됨
     }
 
     @Override
@@ -33,10 +39,30 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
     public void onBindViewHolder(RecyclerAnimationAdapter.ViewHolder holder, int position) {
         RecyclerData data = datas.get(position);
         holder.image.setBackgroundResource(data.image);
+
+        // 이미지에 리스너 달기
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "image clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         holder.title.setText(data.title);
         holder.name.setText(data.name);
         holder.itemView.setTag(data);
 
+        setAnimation(holder.image, position);
+
+    }
+
+    int lastPosition = -1;// 이미 나온 이미지들은 애니매이션을 또 다시 적용하지 않는다 
+    public void setAnimation(View view, int position) {
+        if(position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            view.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override

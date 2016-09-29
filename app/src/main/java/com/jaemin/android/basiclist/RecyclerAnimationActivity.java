@@ -32,7 +32,7 @@ public class RecyclerAnimationActivity extends AppCompatActivity {
         }
 
         RecyclerView listView = (RecyclerView) findViewById(R.id.recyclerView_anim);
-        RecyclerAnimationAdapter adapter = new RecyclerAnimationAdapter(datas, R.layout.recycler_animation_item);
+        RecyclerAnimationAdapter adapter = new RecyclerAnimationAdapter(datas, R.layout.recycler_animation_item, this);
         listView.setAdapter(adapter);
         listView.setLayoutManager(new LinearLayoutManager(this));
     }
