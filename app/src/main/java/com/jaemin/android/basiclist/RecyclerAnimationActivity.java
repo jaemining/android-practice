@@ -25,12 +25,12 @@ public class RecyclerAnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_animation);
 
-        datas = new ArrayList<>();// onCreate가 호출될 때 마다 다시 new로 생성한다 
+        datas = new ArrayList<>();// onCreate가 호출될 때 마다 다시 new로 생성한다
 
         // ArrayList<RecyclerData> datas = new ArrayList<>();
         for (int i=0; i<100; i++) {
             RecyclerData data = new RecyclerData();
-            data.title = (i+1) + " rolling in the deep";
+            data.title = (i+1) + ". Make You Feel My Love";
             data.name = "adele";
             data.image = R.mipmap.adele;
 

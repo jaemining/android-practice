@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
-    ImageButton image;
+    ImageView image;
     TextView title;
     TextView artistName;
 
@@ -21,7 +22,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        image = (ImageButton) findViewById(R.id.imageButton);
+        image = (ImageView) findViewById(R.id.imageView);
         title = (TextView) findViewById(R.id.title_textView);
         artistName = (TextView) findViewById(R.id.artistName_textView);
 
@@ -37,7 +38,8 @@ public class DetailActivity extends AppCompatActivity {
 
         // 키 값을 이용하여 RecyclerAnimationActivity에 전역으로 선언되어 있는 ArrayList를 쓸 수 있다
         RecyclerData data = RecyclerAnimationActivity.datas.get(position);
-        image.setBackgroundResource(data.image);
+        image.setImageResource(data.image);
+        //image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         title.setText(data.title);
         artistName.setText(data.name);
 
