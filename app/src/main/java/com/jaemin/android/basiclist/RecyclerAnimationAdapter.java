@@ -1,6 +1,7 @@
 package com.jaemin.android.basiclist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
     ArrayList<RecyclerData> datas;
     int itemLayout;
     Context context;
+    Intent intent;
 
     public RecyclerAnimationAdapter(ArrayList<RecyclerData> datas, int itemLayout, Context context) {
         this.datas = datas;
@@ -52,11 +54,21 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
         holder.name.setText(data.name);
         holder.itemView.setTag(data);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                intent = new Intent(context, DetailActivity.class);
+                context.startActivity(intent);
+
+            }
+        });
+
         setAnimation(holder.image, position);
 
     }
 
-    int lastPosition = -1;// 이미 나온 이미지들은 애니매이션을 또 다시 적용하지 않는다 
+    int lastPosition = -1;// 이미 나온 이미지들은 애니매이션을 또 다시 적용하지 않는다
     public void setAnimation(View view, int position) {
         if(position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);

@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".RecyclerAnimationActivity" >
         </activity>
+        <activity android:name=".DetailActivity" >
+        </activity>
     </application>
 
 </manifest>
