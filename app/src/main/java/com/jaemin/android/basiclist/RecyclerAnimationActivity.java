@@ -16,12 +16,18 @@ public class RecyclerAnimationActivity extends AppCompatActivity {
         5. 리사이클러뷰에 레이아웃매니저를 지정한다
 
       */
+    // 전역으로 설정, 하지만 이렇게 해두면 버튼이 클릭될 때 마다 100개씩 만들어져서 계속 쌓이기 때문에 null로 해두고 onCreate 안에서 new를 해준다
+    // public static ArrayList<RecyclerData> datas = new ArrayList<>();
+    public static ArrayList<RecyclerData> datas = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_animation);
 
-        ArrayList<RecyclerData> datas = new ArrayList<>();
+        datas = new ArrayList<>();// onCreate가 호출될 때 마다 다시 new로 생성한다 
+
+        // ArrayList<RecyclerData> datas = new ArrayList<>();
         for (int i=0; i<100; i++) {
             RecyclerData data = new RecyclerData();
             data.title = (i+1) + " rolling in the deep";

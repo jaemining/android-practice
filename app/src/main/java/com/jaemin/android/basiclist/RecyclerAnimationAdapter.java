@@ -38,8 +38,8 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAnimationAdapter.ViewHolder holder, int position) {
-        RecyclerData data = datas.get(position);
+    public void onBindViewHolder(final RecyclerAnimationAdapter.ViewHolder holder, final int position) {
+        final RecyclerData data = datas.get(position);
         holder.image.setBackgroundResource(data.image);
 
         // 이미지에 리스너 달기
@@ -59,6 +59,13 @@ public class RecyclerAnimationAdapter extends RecyclerView.Adapter<RecyclerAnima
             public void onClick(View view) {
 
                 intent = new Intent(context, DetailActivity.class);
+
+                intent.putExtra("position", position);
+
+//                intent.putExtra("img", data.image);
+//                intent.putExtra("title", data.title);
+//                intent.putExtra("name", data.name);
+
                 context.startActivity(intent);
 
             }
