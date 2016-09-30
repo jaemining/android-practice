@@ -14,4 +14,10 @@
     tools:context="com.jaemin.android.notepad.Main2Activity"
     tools:showIn="@layout/activity_main2">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>
