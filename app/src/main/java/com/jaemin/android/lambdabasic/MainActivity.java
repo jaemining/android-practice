@@ -13,11 +13,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("람다식으로 만들 예정");
-            }
+        button.setOnClickListener((v) -> {
+
+            System.out.println("람다식으로 만들 예정");
+
         });
     }
 }

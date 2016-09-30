@@ -10,7 +10,17 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        jackOptions {
+            enabled true
+        }
     }
+
+    compileOptions {
+        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_8
+        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
