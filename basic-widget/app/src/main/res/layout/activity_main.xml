@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView">
+
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Result"
+            android:id="@+id/largeTextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/largeTextView"
+            android:text="Radio Button"
+            android:id="@+id/textView1"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/textView1"
+            android:id="@+id/radioGroup">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="apple"
+                android:id="@+id/rdApple"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="orange"
+                android:id="@+id/rdOrange"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="banana"
+                android:id="@+id/rdBanana"
+                android:checked="false" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioGroup"
+            android:text="Check Box"
+            android:id="@+id/textView2" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView2"
+            android:id="@+id/checkboxLayout">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dog"
+                android:id="@+id/checkBoxDog"
+                android:layout_below="@+id/radioGroup"
+                android:layout_centerHorizontal="true"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pig"
+                android:id="@+id/checkBoxPig"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chicken"
+                android:checked="false"
+                android:id="@+id/checkBoxChicken" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switch"
+            android:id="@+id/textView3"
+            android:layout_below="@id/checkboxLayout" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView3"
+            android:id="@+id/switchLayout">
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="on/off"
+                android:id="@+id/switch1"
+                android:checked="false" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/switchLayout"
+            android:text="Toggle"
+            android:id="@+id/textView4" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView4"
+            android:id="@+id/toggleLayout"
+            android:weightSum="1">
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New ToggleButton"
+                android:id="@+id/toggleButton" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toggleLayout"
+            android:text="Progress Bar"
+            android:id="@+id/textView5" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView5"
+            android:id="@+id/progressBarLayout"
+            android:weightSum="1">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_below="@id/progressBarLayout"/>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="on/off"
+                android:id="@+id/switch2"
+                android:checked="true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressBarLayout"
+            android:text="Seek Bar"
+            android:id="@+id/textView6" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView6"
+            android:id="@+id/seekBarLayout"
+            android:weightSum="1">
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="200"
+                android:progress="50"
+                android:id="@+id/seekBar1"
+                android:indeterminate="false" />
+            <!--
+            max : 최댓값 설정 / progress : 시작값 설정
+            -->
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:id="@+id/sb_textView"
+            android:layout_below="@+id/seekBarLayout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sb_textView"
+            android:text="Rating Bar"
+            android:id="@+id/textView7" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView7"
+            android:id="@+id/ratingBarLayout"
+            android:weightSum="1">
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar1"
+                android:background="#e9d019" />
+            <!--
+            numStars : 별 개수 / rating : 시작값 / stepSize : default가 0.5 
+            -크기조정
+            style="android:attr/ratingBarStyleSmall"
+            -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0/5"
+                android:id="@+id/rb_textView"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</ScrollView>
