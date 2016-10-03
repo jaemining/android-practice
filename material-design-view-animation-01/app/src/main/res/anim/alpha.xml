@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="5000"
+    android:fromAlpha="0.0"
+    android:toAlpha="1.0"
+    android:fillAfter="true">
+</alpha>
+<!--
+    duration : 지속시간
+    fromAlpha : 투명도 시작값, 1이면 불명투명
+    toAlpha : 투명도 종료값, 0이면 투명
+    fillAfter : 애니매이션 종료상태를 유지한다
+-->
