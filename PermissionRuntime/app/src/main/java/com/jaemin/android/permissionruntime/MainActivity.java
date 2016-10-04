@@ -1,9 +1,11 @@
 package com.jaemin.android.permissionruntime;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,8 @@ import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private final static int REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +33,26 @@ public class MainActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void checkPermissions() {
-        if(checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             // 쓰기 권한이 없으면 로직 처리
+            // 중간에 권한 내용에 대한 알림을 처리하는 함수
+            //shouldShowRequestPermissionRationale();
+            String permissionArray[] = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            requestPermissions(permissionArray, REQUEST_CODE);// 콜백함수가 호출될 때 requestCode가 넘어온다
         } else {
             // 쓰기 권한이 있으면 파일 생성
             createFile();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) { // 사용자가 권한 설정을 OK 했는지 확인하는 과정
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CODE :
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    createFile();
+                }
         }
     }
 
