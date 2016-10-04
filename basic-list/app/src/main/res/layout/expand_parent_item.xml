@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:text="Hint"
         android:textSize="30dp"
-        android:layout_marginLeft="20dp"
         />
 
 </RelativeLayout>

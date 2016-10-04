@@ -1,7 +1,9 @@
 package com.jaemin.android.basiclist;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
@@ -43,7 +45,24 @@ public class ExpandableActivity extends AppCompatActivity {
         data.add(data2);
 
         ExpandableAdapter ea = new ExpandableAdapter(this, R.layout.expand_parent_item, R.layout.expand_child_item, data);
+
+        DisplayMetrics metrics = new DisplayMetrics(); // 화면에 실제 들어가는 픽셀 사이즈를 가져올 때 많이 사용
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels; // 화면의 실제 가로 사이즈
+
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2)
+            listView.setIndicatorBounds(width - getPixelFromDisplay(50), width - getPixelFromDisplay(10));// width -50  부터 width 까지
+        else
+            listView.setIndicatorBoundsRelative(width-getPixelFromDisplay(50), width - getPixelFromDisplay(10));
+
         listView.setAdapter(ea);
 
+    }
+
+    public int getPixelFromDisplay(float pixels) {
+        // 화면 밀도 스케일
+        final float scale = getResources().getDisplayMetrics().density;
+        // 컨버팅 dps > pixel - 화면 밀도 스케일을 기준으로
+        return (int)(pixels * scale + 0.5f);
     }
 }
