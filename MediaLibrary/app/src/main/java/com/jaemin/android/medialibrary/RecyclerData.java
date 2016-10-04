@@ -5,6 +5,8 @@ package com.jaemin.android.medialibrary;
  */
 
 public class RecyclerData {
+    String musicId;
+    String albumId;
     String title;
     String name;
 }
