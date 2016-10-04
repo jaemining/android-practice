@@ -62,7 +62,7 @@ public class ExpandableActivity extends AppCompatActivity {
         // dp를 px로 변환할 때
         int convertedPixel = (int)TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics()
-        ); // 200 : dp 값 입력하는 부분 
+        ); // 200 : dp 값 입력하는 부분
 
     }
 
