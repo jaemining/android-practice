@@ -11,8 +11,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.jaemin.android.fragmentbasic02.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.jaemin.android.fragmentbasic02.FragmentOne"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/fragment"
+        tools:layout="@layout/fragment_fragment_one"/>
 </RelativeLayout>
