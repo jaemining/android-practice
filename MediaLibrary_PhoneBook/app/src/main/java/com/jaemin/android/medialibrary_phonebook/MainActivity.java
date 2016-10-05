@@ -55,12 +55,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initData() {
-        ArrayList<RecyclerData> datas = getContacts();
+        // ArrayList<RecyclerData> datas = getContacts();
+        ArrayList<RecyclerData> datas = getPhoneNumbers();
+
 
         RecyclerView listView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerAdapter adapter = new RecyclerAdapter(datas, R.layout.recycler_item);
         listView.setAdapter(adapter);
         listView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    // 전화번호만 가져올 때, 성능이 향상된 코드
+    public ArrayList<RecyclerData> getPhoneNumbers() {
+        ArrayList<RecyclerData> datas = new ArrayList<>();
+
+        Cursor c = getContentResolver().query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI, // 전화번호 안의 URI를 그대로 쓴다
+                null,
+                null,
+                null,
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" desc"// asc 앞에 한 칸을 띄워주어야 명령어로 인식한다
+        );
+
+        if (c != null) {
+            while (c.moveToNext()) {
+                RecyclerData data = new RecyclerData();
+
+                data.name = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                data.phoneNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
+                datas.add(data);
+            }
+        }
+
+        c.close();
+        return datas;
     }
 
     public ArrayList<RecyclerData> getContacts() {
