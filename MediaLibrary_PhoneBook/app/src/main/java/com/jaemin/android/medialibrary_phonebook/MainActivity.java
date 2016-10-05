@@ -1,7 +1,12 @@
 package com.jaemin.android.medialibrary_phonebook;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,11 +16,44 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CODE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            initData();
+        } else {
+            checkPermissions();
+        }
+
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermissions() {
+        if(checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            String permissionArray[] = {Manifest.permission.READ_CONTACTS};
+            requestPermissions(permissionArray, REQUEST_CODE);
+        } else {
+            initData();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) { // 사용자가 권한 설정을 OK 했는지 확인하는 과정
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CODE :
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    initData();
+                }
+        }
+    }
+
+    public void initData() {
         ArrayList<RecyclerData> datas = new ArrayList<>();
         for (int i=0; i<100; i++) {
 
