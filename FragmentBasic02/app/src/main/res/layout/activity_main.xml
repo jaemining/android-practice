@@ -12,12 +12,11 @@
     tools:context="com.jaemin.android.fragmentbasic02.MainActivity">
 
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.jaemin.android.fragmentbasic02.FragmentOne"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/fragment"
-        tools:layout="@layout/fragment_fragment_one"/>
+        android:id="@+id/fragment"/>
 </RelativeLayout>
