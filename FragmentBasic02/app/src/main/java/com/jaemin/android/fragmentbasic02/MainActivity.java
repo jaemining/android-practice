@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
 
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        
         // 쌓았을 때
         transaction.replace(R.id.fragment, fragmentTwo); // fragment를 넣을 장소를 먼저 지정해준다
         transaction.addToBackStack(null);
