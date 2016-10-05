@@ -48,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goOne() {
-        FragmentManager manager = getSupportFragmentManager(); // getSupportFragmentManage를 사용하는 이유 ?
+        FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-
-        // 쌓았을 때
-        transaction.add(R.id.fragment, fragmentOne); // fragment를 넣을 장소를 먼저 지정해준다
+        transaction.add(R.id.fragment, fragmentOne);
         transaction.addToBackStack(null);
         transaction.commit();
 
