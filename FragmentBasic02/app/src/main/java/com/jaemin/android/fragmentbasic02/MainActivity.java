@@ -18,6 +18,17 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentOne = new FragmentOne();
         fragmentTwo = new FragmentTwo();
+
+        setOne();
+    }
+
+    // 처음에 들어오는 Fragment 지정 , 왜냐면 FrameLayout은 처음에 fragment를 지정해주는 기능이 없기때문 
+    public void setOne() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment, fragmentOne);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 
