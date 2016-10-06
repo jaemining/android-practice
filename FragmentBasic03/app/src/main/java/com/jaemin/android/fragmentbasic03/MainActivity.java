@@ -1,12 +1,14 @@
 package com.jaemin.android.fragmentbasic03;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentTwo;
     ListView listView;
     CustomAdapter adapter;
-    ArrayList<DummyContent> datas;
+    public static ArrayList<ListData> datas = null;
 
 
     @Override
@@ -27,17 +29,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentOne = new FragmentOne();
-        fragmentTwo = new FragmentTwo();
-        listView = (ListView) findViewById(R.id.listView);
+
         datas = new ArrayList<>();
 
         for (int i=0; i<50; i++) {
-            DummyContent dummyContent = new DummyContent();
+            ListData dummyContent = new ListData();
             dummyContent.title = (i+1) + ") Dummy title";
             dummyContent.content = "Dummy Content";
             datas.add(dummyContent);
         }
+
+        fragmentOne = new FragmentOne();
+        fragmentTwo = new FragmentTwo();
+        listView = (ListView) findViewById(R.id.listView);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                
+            }
+        });
+
         adapter = new CustomAdapter(this, datas, R.layout.fragment_item);
         listView.setAdapter(adapter);
     }
@@ -46,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 class CustomAdapter extends BaseAdapter {
 
     Context context; // context
-    ArrayList<DummyContent> datas; // data 배열
+    ArrayList<ListData> datas; // data 배열
     LayoutInflater inflater; // xml 파일을 instance화 해서 메모리에 올려준다
     int item;
 
@@ -57,6 +69,7 @@ class CustomAdapter extends BaseAdapter {
         // 시스템에서 xml을 개체화 시켜주는 인플레이터를 가져온다
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
 
     @Override
     public int getCount() { // 자식뷰들의 개수를 리턴해준다
