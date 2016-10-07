@@ -7,22 +7,23 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BlankFragment.OnListFragmentInteractionListener {
+    private ViewPager pager;
+
+    BlankFragment bf = null;
+    GalleryFragment gf = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
     }
 
     private class PagerAdapter extends FragmentStatePagerAdapter {
-
-        BlankFragment bf = null;
-        GalleryFragment gf = null;
 
         // fragment adapter를 생성하기 위해서는 fragment manager를 생성자에 넘겨주고
         // 부모 adapter가 초기화 하여야 한다
@@ -51,7 +52,11 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return 2;// Fragment가 2개니까~
         }
+    }
 
-
+    @Override
+    public void onListFragmentInteraction(RecyclerData item) {
+        pager.setCurrentItem(1, true);
+        gf.setItem(item);
     }
 }
