@@ -1,0 +1,35 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jaemin.android.sqlitebasic_bbs.EditFragment">
+
+
+    <TextView
+        android:id="@+id/textView_editFragment"
+        android:text="Edit Fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_editFragment"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button_cancel"/>
+
+    <Button
+        android:text="save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button_cancel"
+        android:layout_toLeftOf="@+id/button_cancel"
+        android:layout_toStartOf="@+id/button_cancel"
+        android:id="@+id/button_save"/>
+
+</RelativeLayout>
