@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment home;
     MapFragment map;
     EtcFragment etc;
-    SettingsFragment settings;
+
+    BlankFragment settings;
+
     ViewPager viewPager;
 
     @Override
@@ -26,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         home = new HomeFragment();
         map = new MapFragment();
         etc = new EtcFragment();
-        settings = new SettingsFragment();
+        //settings = new SettingsFragment();
+        settings = new BlankFragment();
 
         TabLayout tab = (TabLayout) findViewById(R.id.tab);
         tab.addTab(tab.newTab().setText("Home")); // 탭을 하나씩 추가하는 코드
