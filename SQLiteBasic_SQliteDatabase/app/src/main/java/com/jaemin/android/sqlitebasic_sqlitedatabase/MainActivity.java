@@ -19,7 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        assetToDisk("sqlite.db");
+    }
 
+    public void assetToDisk(String fileName) {
         // 외부에서 작성된 sqlite.db 파일 사용하기
         // 1. assets에 담아둔 파일을 internal 혹은 external 공간으로 복사하기 위해 읽어온다
         // 가져오는 명령어 - assetmanager
@@ -32,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         try {
-            is = manager.open("sqlite.db");
+            is = manager.open(fileName);
             bis = new BufferedInputStream(is);
 
             // 2. 저장할 위치에 파일이 없으면 생성한다
             String internalPath = getFilesDir().getAbsolutePath();
             Log.i("aaa", "=== internalPath ===" + internalPath);
-            String targetFile = internalPath + File.separator + "sqlite.db";
+            String targetFile = internalPath + File.separator + fileName;
             Log.i("aaa", "=== targetFile ===" + targetFile);
             File file = new File(targetFile);
             if(!file.exists()) {
@@ -73,10 +76,5 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
-    }
-
-    public void assetToDisk() {
-
     }
 }
