@@ -1,5 +1,6 @@
 package com.jaemin.android.fragmentbasic_tablayout_viewpager;
 
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,8 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener {
 
     static final int FRAGMENT_COUNT = 4;
 
@@ -66,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) { // 이 리스너를 구현해 주면 된다
+        Toast.makeText(this, "서브 프래그먼트에서 클림됨 ", Toast.LENGTH_SHORT).show();
     }
 
     class PagerAdapter extends FragmentStatePagerAdapter {
