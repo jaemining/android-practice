@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
     static final int FRAGMENT_COUNT = 4;
 
@@ -71,8 +71,12 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) { // 이 리스너를 구현해 주면 된다
-        Toast.makeText(this, "서브 프래그먼트에서 클림됨 ", Toast.LENGTH_SHORT).show();
+    public void onFragmentInteraction(Fragment fragment) { // 이 리스너를 구현해 주면 된다
+        if(fragment instanceof HomeFragment){
+            Toast.makeText(this, "HomeFragment", Toast.LENGTH_SHORT).show();
+        } else if(fragment instanceof BlankFragment){
+            Toast.makeText(this, "BlankFragment", Toast.LENGTH_SHORT).show();
+        }
     }
 
     class PagerAdapter extends FragmentStatePagerAdapter {

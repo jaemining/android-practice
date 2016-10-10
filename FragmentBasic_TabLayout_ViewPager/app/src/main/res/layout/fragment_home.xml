@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context="com.jaemin.android.fragmentbasic_tablayout_viewpager.HomeFragment">
 
-    <TextView
-        android:id="@+id/Home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/button_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"/>
 </RelativeLayout>
