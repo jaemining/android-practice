@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DBHelper dbHelper = new DBHelper(this);
+        Log.i("Memo", "Version ===== " + dbHelper.getReadableDatabase().getVersion());
 //        Memo memo = new Memo();
 //        memo.contents = "메모 내용 ";
 //        memo.ndate = dbHelper.getTimeStamp();
