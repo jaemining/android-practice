@@ -11,8 +11,119 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.jaemin.android.optimization_render.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffff00">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#ff00ff">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ff0f0f">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00f0f0">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#ffffff">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#f0f0f0">
+
+                            <Button
+                                android:text="Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/button"
+                                android:layout_weight="1"/>
+
+                            <Button
+                                android:text="Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/button3"
+                                android:layout_weight="1"/>
+
+                            <Button
+                                android:text="Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/button2"
+                                android:layout_weight="1"/>
+
+                            <Button
+                                android:text="Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/button4"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#f0f0f0">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </TableLayout>
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#ff00ff">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </TableLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
