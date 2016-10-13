@@ -16,11 +16,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DBHelper dbHelper = new DBHelper(this);
-        Memo memo = new Memo();
-        memo.contents = "메모 내용 ";
-        memo.ndate = dbHelper.getTimeStamp();
-
-        dbHelper.dbInsert(memo);
+//        Memo memo = new Memo();
+//        memo.contents = "메모 내용 ";
+//        memo.ndate = dbHelper.getTimeStamp();
+//
+//        dbHelper.dbInsert(memo);
         Log.i("Memo", "Db ===== "+dbHelper);
 
 
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Memo", "no ===== " + data.no);
             Log.i("Memo", "contents ===== " + data.contents);
             Log.i("Memo", "ndate ===== " + data.ndate);
+            Log.i("Memo", "image ===== " + data.image);
         }
     }
 }
