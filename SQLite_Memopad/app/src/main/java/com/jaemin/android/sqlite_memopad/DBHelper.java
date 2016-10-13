@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "memo.sqlite";
-    private final static int DB_VERSION = 1;
+    private final static int DB_VERSION = 2;
 
     // 쿼리를 만들어 준다
     // CRRUD(C: insert, R:select one, R:select all, U:update, D:delete)
@@ -72,6 +72,9 @@ public class DBHelper extends SQLiteOpenHelper {
             idx = cursor.getColumnIndex("ndate");
             memo.ndate = cursor.getLong(idx);
 
+            idx = cursor.getColumnIndex("image");
+            memo.image = cursor.getString(idx);
+
             // 5.2 datas.add(메모데이터)
             datas.add(memo);
         }
@@ -102,19 +105,62 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        // DB version 1 - 최초등록
-        // primary key 다음에 autoincrement를 써야한다 (순서 바뀌면 안됨) , ndate가 integer인 이유는 자바에서 넣어줄거라서!!
-        String schema_01 = "create table memo(no integer primary key autoincrement not null" +
-                ", contents text not null" +
-                ", ndate integer not null)";
+//        // DB version 1 - 최초등록 2016/10/13 11:30
+//        // primary key 다음에 autoincrement를 써야한다 (순서 바뀌면 안됨) , ndate가 integer인 이유는 자바에서 넣어줄거라서!!
+//        String schema_01 = "create table memo(no integer primary key autoincrement not null" +
+//                ", contents text not null" +
+//                ", ndate integer not null)";
+//
+//        // 실행해서 table을 생성한다
+//        sqLiteDatabase.execSQL(schema_01);
 
-        // 실행해서 table을 생성한다
-        sqLiteDatabase.execSQL(schema_01);
+
+        // DB version2 - upgrade 2016/10/13 14:08
+        // 이미지 추가
+        String schema_02 = "create table memo(no integer primary key autoincrement not null" +
+                ", contents text not null" +
+                ", image text" +
+                ", ndate integer not null)";
+        sqLiteDatabase.execSQL(schema_02);
+
+        // 백업된 데이터 복원
+        for (Memo memo : backupDatas) {
+            String query = " insert into memo(contents, ndate)" +
+                    " values('"+memo.contents+"', '"+memo.ndate+"')";
+            sqLiteDatabase.execSQL(query);
+        }
+
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    ArrayList<Memo> backupDatas = new ArrayList<>();
 
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+
+        // 이전 데이터베이스 버전에 따라 처리 방식이 달라진다
+        if (oldVersion == 1 ) {
+            // 컬럼이 3개
+            // 디비는 현재 열려져있는 상태 ?-?
+
+            String query = " select no, contents, ndate from memo order by no ";
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+            while (cursor.moveToNext()) {
+                Memo memo = new Memo();
+
+                memo.no = cursor.getInt(0);
+                memo.contents = cursor.getString(1);
+                memo.ndate = cursor.getLong(2);
+
+                backupDatas.add(memo);
+            }
+        }
+
+        // DB version2 - upgrade 2016/10/13 14:08
+        String schema_01_drop = "drop table memo";
+        sqLiteDatabase.execSQL(schema_01_drop);
+
+        onCreate(sqLiteDatabase);
     }
 
     // 현재 시간 가져오기
