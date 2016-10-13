@@ -8,6 +8,9 @@ public class Memo {
 
     public int no;
     public String contents;
+
+    public String image; // 이미지 컬럼 추가
+
     public long ndate;
 
 }
