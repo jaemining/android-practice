@@ -15,24 +15,17 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private final static int GROUND_LIMIT = 10;
-
+    
     private int groundUnit = 0;
     private int unit = 0;
     private int player_x = 0; // 박스 좌표
     private int player_y = 0; // 박스 좌표
-
-    private int enemy_x = 0;
-    private int enemy_y = 0;
-    private int enemy_size = 10;
 
     FrameLayout ground;
     Button up;
     Button down;
     Button right;
     Button left;
-
     Button start;
 
     CustomView cv;
