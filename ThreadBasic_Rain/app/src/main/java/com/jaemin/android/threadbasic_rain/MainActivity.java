@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class CustomView extends View {
-        ArrayList<RainDrop> rainDrops = new ArrayList<>();
+        //ArrayList<RainDrop> rainDrops = new ArrayList<>();
+        List<RainDrop> rainDrops = Collections.synchronizedList(new ArrayList<RainDrop>());
+
         Paint paint = new Paint();
 
         public CustomView(Context context) {
@@ -105,9 +110,11 @@ public class MainActivity extends AppCompatActivity {
             super.onDraw(canvas);
 
             try {
-                for (RainDrop rainDrop : rainDrops) {
-                    // 하나씩 꺼내서 그려준다
-                    canvas.drawCircle(rainDrop.x, rainDrop.y, rainDrop.size, paint);
+                synchronized (rainDrops) {
+                    for (RainDrop rainDrop : rainDrops) {
+                        // 하나씩 꺼내서 그려준다
+                        canvas.drawCircle(rainDrop.x, rainDrop.y, rainDrop.size, paint);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
