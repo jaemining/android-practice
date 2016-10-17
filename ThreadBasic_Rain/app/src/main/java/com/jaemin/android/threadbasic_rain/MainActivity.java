@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
             // 화면을 그리는 thread 생성 후 동작
-            CallDraw cd = new CallDraw(cv, 5);
+            CallDraw cd = new CallDraw(cv, 10);
             new Thread(cd).start();
 
             while (running) {
@@ -182,5 +182,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    
+
 }
