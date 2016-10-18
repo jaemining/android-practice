@@ -12,7 +12,38 @@
     tools:context="com.jaemin.android.threadbasic_handler.MainActivity">
 
     <TextView
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/textView"/>
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:id="@+id/button_start"/>
+
+    <Button
+        android:text="call sub function "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87dp"
+        android:id="@+id/button_call"
+        android:layout_below="@+id/button_start"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:text="start handlerThread "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/button_startHandlerThread"
+        android:layout_below="@+id/button_start"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
