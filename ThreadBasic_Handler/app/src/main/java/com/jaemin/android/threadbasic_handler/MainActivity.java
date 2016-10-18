@@ -143,6 +143,11 @@ public class MainActivity extends AppCompatActivity {
 
         public void hideProgress() {
             progress.dismiss();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             Log.i("Looper Handler", "진행 상태 해제");
             quit();// 루퍼를 빠져나가는 명령어
         }
