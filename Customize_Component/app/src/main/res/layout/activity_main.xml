@@ -11,8 +11,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.jaemin.android.customize_component.MainActivity">
 
-    <TextView
+    <Button
+        android:text="click checkkkkkkkkkkk "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:id="@+id/button_clickCheck"
+        android:background="@drawable/button_check"/>
+
+    <Button
+        android:text="shape "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:id="@+id/button_shape"
+        android:background="@drawable/button_shape"
+        android:layout_below="@+id/button_clickCheck"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:text="9patch test 9patch test 9patch test 9patch test "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:id="@+id/button3"
+        android:layout_below="@+id/button_shape"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/button1"/>
 </RelativeLayout>
