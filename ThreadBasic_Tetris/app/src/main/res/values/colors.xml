@@ -9,13 +9,13 @@
     <color name="border">#332f2f</color>
 
     <!-- block color -->
-    <color name="block1">#ec672e</color>
-    <color name="block2">#e7e42a</color>
-    <color name="block3">#49be34</color>
-    <color name="block4">#2fa7e4</color>
-    <color name="block5">#c967dc</color>
+    <color name="block1">#e42c26</color>
+    <color name="block2">#e7952a</color>
+    <color name="block3">#e4d12a</color>
+    <color name="block4">#6fda4b</color>
+    <color name="block5">#57c8e4</color>
     <color name="block6">#c70f84</color>
-    <color name="block7">#f5574c</color>
+    <color name="block7">#904cf5</color>
 
     <!-- text color -->
     <color name="textTitle">#ede2e2</color>
