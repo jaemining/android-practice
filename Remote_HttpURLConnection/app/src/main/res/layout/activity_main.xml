@@ -12,7 +12,7 @@
     tools:context="com.jaemin.android.remote_httpurlconnection.MainActivity">
 
     <Button
-        android:text="call google"
+        android:text="call open api"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
