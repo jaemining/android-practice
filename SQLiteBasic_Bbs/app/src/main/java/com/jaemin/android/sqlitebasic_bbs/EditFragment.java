@@ -1,25 +1,46 @@
 package com.jaemin.android.sqlitebasic_bbs;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
+package com.kodonho.android.sqlitebasic_bbs;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link EditFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link EditFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 public class EditFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    private static final int BBS_INSERT = -1;
+    //private static final int BBS_INSERT = -1;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -27,21 +48,46 @@ public class EditFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Button cancel;
+    Button save;
+
+    int bbsno = -1;
+    EditText title;
+    EditText name;
+    EditText contents;
+
+    Button buttonImage;
+
+    ImageView imageView;
+
     private OnFragmentInteractionListener mListener;
 
     public EditFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+    // Database에서 bbsno에 해당하는 레코드를 가져와서 화면에 뿌려준다
+    public void setData(int bbsno) {
+        // 해당 리스트가 클릭되면 Edit 화면에 값을 뿌려주는 함수
+        BbsData data = DataUtil.select(getContext(), bbsno);
+        Log.i("setData", "bbsno =  "+bbsno);
+
+        title.setText(data.title);
+        name.setText(data.name);
+        contents.setText(data.contents);
+
+        this.bbsno = bbsno;
+    }
+
+    // 캔슬하거나 저장 후에 호출하여 데이터를 리셋 !
+    public void resetData() {
+        title.setText("");
+        name.setText("");
+        contents.setText("");
+
+        this.bbsno = -1;
+    }
+
     public static EditFragment newInstance(String param1, String param2) {
         EditFragment fragment = new EditFragment();
         Bundle args = new Bundle();
@@ -63,14 +109,87 @@ public class EditFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit, container, false);
+
+        cancel = (Button) view.findViewById(R.id.btnCancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.action(MainActivity.ACTION_CANCEL);
+                resetData();
+            }
+        });
+
+        save = (Button) view.findViewById(R.id.btnSave);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BbsData data = new BbsData();
+                data.no = bbsno;
+                data.title = title.getText().toString();
+                data.name = name.getText().toString();
+                data.contents = contents.getText().toString();
+
+                if (bbsno == BBS_INSERT) {
+                    DataUtil.insert(getContext(), data);
+                    // insert 또는 update에 따라 flag값 변경해야 됨
+                    //mListener.actionSave(data, MainActivity.SAVE_INSERT);
+                } else {
+                    DataUtil.update(getContext(), data);
+                    //mListener.actionSave(data, MainActivity.SAVE_UPDATE);
+                }
+                resetData();
+                mListener.action(MainActivity.ACTION_GOEDIT_WITH_REFRESH);
+
+
+                resetData();
+            }
+        });
+
+        title = (EditText) view.findViewById(R.id.etTitle);
+        name = (EditText) view.findViewById(R.id.etName);
+        contents = (EditText) view.findViewById(R.id.etContents);
+
+        buttonImage = (Button) view.findViewById(R.id.button_image);
+        buttonImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 이미지를 호출하는 action intent
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // 결과값을 넘겨받기위해 호출
+                startActivityForResult(intent, REQ_CODE_IMAGE);
+            }
+        });
+
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private static final int REQ_CODE_IMAGE = 99;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // 갤러리가 닫히면 호출된다 ?
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE_IMAGE && data != null) {
+            Uri mediaImage = data.getData(); // 이미지 Uri
+            String selections[] = {MediaStore.Images.Media.DATA}; // 실제 이미지 패스 데이터
+            Cursor cursor = getContext().getContentResolver().query(mediaImage, selections, null, null, null);
+
+            if (cursor.moveToNext()) {
+                String imagePath = cursor.getString(0);
+                name.setText(imagePath);
+                // Log.i("aaaa", "imagePath ===== " + imagePath);
+
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+
+                options.inSampleSize = 10; // 이미지 사이즈를 1/2로 줄인다
+                Bitmap image = BitmapFactory.decodeFile(imagePath, options);
+
+                imageView.setImageBitmap(image);
+            }
         }
     }
 
@@ -89,20 +208,5 @@ public class EditFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }
