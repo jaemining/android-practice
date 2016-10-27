@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ButterKnife</string>
+    <string name="butterknife">리소스 가져옴</string>
 </resources>
