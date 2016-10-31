@@ -4,8 +4,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +20,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
     Button btnSignUp;
     Button btnSignIn;
     TextView etLog;
+
+    ListView listView;
+    ArrayList<Map<String, User>> datas = new ArrayList<>();
+
+    FirebaseDatabase database;
+    DatabaseReference userRef;
+
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -39,8 +59,10 @@ public class MainActivity extends AppCompatActivity {
         etPassword = (TextView) findViewById(R.id.editText_password);
         btnSignUp = (Button) findViewById(R.id.button_signUp);
         btnSignIn = (Button) findViewById(R.id.button_signIn);
-        etLog = (TextView) findViewById(R.id.textView_log);
 
+        listView = (ListView) findViewById(R.id.listView);
+        ListAdapter adapter = new ListAdapter();
+        listView.setAdapter(adapter);
 
         // 1. 인증객체 가져오기
         mAuth = FirebaseAuth.getInstance();
@@ -86,6 +108,36 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Email과 Password를 입력해주세요",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        // Database Connection
+        database = FirebaseDatabase.getInstance();
+
+        userRef = database.getReference("users");
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot users) {
+                Log.e("FireBase","snapshot="+users.getValue());
+
+                datas = new ArrayList<>();
+                for(DataSnapshot userData : users.getChildren()){
+                    try {
+                        Map<String, User> data = new HashMap<>();
+                        String userId = userData.getKey();
+                        User user = userData.getValue(User.class);
+                        data.put(userId, user);
+                        datas.add(data);
+                    }catch(Exception e){
+                        // 데이터 구조가 달라서 매핑이 안될경우 예외처리
+                        e.printStackTrace();
+                    }
+                }
+                listView.deferNotifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
@@ -158,4 +210,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    class ListAdapter extends BaseAdapter {
+
+        LayoutInflater inflater;
+        public ListAdapter() {
+            inflater = getLayoutInflater();
+        }
+
+        @Override
+        public int getCount() {
+            return datas.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return datas.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int position, View converView, ViewGroup parent) {
+            if(converView == null) {
+                converView = inflater.inflate(R.layout.list_item, null);
+
+            }
+            TextView tvName = (TextView) converView.findViewById(R.id.textView_name);
+            TextView tvUserID = (TextView) converView.findViewById(R.id.textView_UserID);
+            TextView tvEmail = (TextView) converView.findViewById(R.id.textView_email);
+
+            Map<String, User> data = datas.get(position);
+            String userID = data.keySet().iterator().next();
+            User user = data.get(userID);
+
+            tvUserID.setText(userID);
+            tvName.setText(user.username);
+            tvEmail.setText(user.email);
+
+            return converView;
+        }
+    }
 }
