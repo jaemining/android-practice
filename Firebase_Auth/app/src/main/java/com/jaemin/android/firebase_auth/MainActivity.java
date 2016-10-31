@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     TextView etPassword;
     Button btnSignUp;
     Button btnSignIn;
-    TextView etLog;
+    Button btnSignOut;
 
     ListView listView;
     ArrayList<Map<String, User>> datas = new ArrayList<>();
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         etPassword = (TextView) findViewById(R.id.editText_password);
         btnSignUp = (Button) findViewById(R.id.button_signUp);
         btnSignIn = (Button) findViewById(R.id.button_signIn);
+        btnSignOut = (Button) findViewById(R.id.button_signOut);
 
         listView = (ListView) findViewById(R.id.listView);
         ListAdapter adapter = new ListAdapter();
@@ -106,8 +107,17 @@ public class MainActivity extends AppCompatActivity {
                 if(!"".equals(email) && !"".equals(pwd)) {
                     signInUser(email, pwd);
                 } else {
-                    Toast.makeText(MainActivity.this, "Email과 Password를 입력해주세요",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Email과 Password를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        // sign out
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Toast.makeText(MainActivity.this, "sign out", Toast.LENGTH_SHORT).show();
             }
         });
 
