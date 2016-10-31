@@ -66,4 +66,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/listView"/>
+
+    <Button
+        android:text="sign out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_password"
+        android:layout_alignRight="@+id/editText_password"
+        android:layout_alignEnd="@+id/editText_password"
+        android:id="@+id/button_signOut"/>
 </RelativeLayout>
