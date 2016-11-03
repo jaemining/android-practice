@@ -28,13 +28,18 @@ public class RestAdapter {
     public static final int WRITE_TIMEOUT = 5;
     public static final int READ_TIMEOUT = 3;
 
-    private static final String SERVER_URL = "http://openapi.seoul.go.kr:8088";
+    //private static final String SERVER_URL = "http://openapi.seoul.go.kr:8088";
+    //http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=309451bfb5c29d77bd719001fc1e3d71&targetDt=20161010
+    private static final String SERVER_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+
 
     private static OkHttpClient client;
 
-    private static ISeoulOpenData service;
+    //private static ISeoulOpenData service;
+    private static MovieOpenData service;
 
-    public static ISeoulOpenData getInstance() {
+
+    public static MovieOpenData getInstance() {
         if(service == null) {
             // 통신 로그를 확인하기 위한 interceptor 설정
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -61,7 +66,7 @@ public class RestAdapter {
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                    .create(ISeoulOpenData.class);
+                    .create(MovieOpenData.class);
         }
 
         return service;

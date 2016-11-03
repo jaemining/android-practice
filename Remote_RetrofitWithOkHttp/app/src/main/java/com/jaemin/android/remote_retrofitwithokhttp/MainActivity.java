@@ -21,21 +21,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void callHttp() {
-        String key = "6d527467476a61653639544f446167";
-        String serviceName = "CardSubwayStatisticsService";
+        //String key = "6d527467476a61653639544f446167";
+        //String serviceName = "CardSubwayStatisticsService";
 
-        int begin = 1; // 시작 위치
-        int end = 5;
+        String key = "309451bfb5c29d77bd719001fc1e3d71";
+        String targetDt = "20161010";
 
-        Call<RemoteData> remoteData = RestAdapter.getInstance().getData(key, serviceName, begin, end);
-        remoteData.enqueue(new Callback<RemoteData>() {
+
+        //int begin = 1; // 시작 위치
+        //int end = 5;
+
+        //Call<RemoteData> remoteData = RestAdapter.getInstance().getData(key, serviceName, begin, end);
+        Call<BoxOfficeResult> remoteData = RestAdapter.getInstance().getData(key, targetDt);
+
+        remoteData.enqueue(new Callback<BoxOfficeResult>() {
             @Override
-            public void onResponse(Call<RemoteData> call, Response<RemoteData> response) {
+            public void onResponse(Call<BoxOfficeResult> call, Response<BoxOfficeResult> response) {
                 if (response.isSuccessful()) {
-                    RemoteData data = response.body();
+                    BoxOfficeResult data = response.body();
 
-                    for(Row row : data.getCardSubwayStatisticsService().getRow()) {
-                        Log.w("OkHttp", "sub station name = "+row.getSUB_STA_NM());
+                    for(DailyBoxOfficeList movie : data.getDailyBoxOfficeList()) {
+                        Log.w("OkHttp", "sub station name = "+movie.getMovieNm());
+                        Log.w("OkHttp", "sub station name = "+movie.getRank());
+
                     }
                 } else {
                     Log.e("ERROR", response.message());
@@ -43,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RemoteData> call, Throwable t) {
+            public void onFailure(Call<BoxOfficeResult> call, Throwable t) {
                 t.printStackTrace();
             }
         });
+
+
     }
 }
