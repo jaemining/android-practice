@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void call(Subscriber<? super String> subscriber) {
                 subscriber.onNext("Hello RxAndroid ~!");
-
+                subscriber.onNext("My name is Jaemin");
+                subscriber.onCompleted();
             }
         });
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         observable.subscribe(new Subscriber<String>() { // call()이 호출된다
             @Override
             public void onCompleted() {
-
+                Log.i("RxAndroid", "onCompleted()");
             }
 
             @Override
