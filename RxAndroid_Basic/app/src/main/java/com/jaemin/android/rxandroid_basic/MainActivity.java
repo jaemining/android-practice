@@ -3,9 +3,12 @@ package com.jaemin.android.rxandroid_basic;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Action0;
+import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +43,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNext(String s) {
                 Log.i("RxAndroid", "next value === " + s);
+            }
+        });
+
+        observable.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                ((TextView) findViewById(R.id.textView)).setText(s);
+            }
+        }, new Action1<Throwable>() { // onError에 해당
+            @Override
+            public void call(Throwable throwable) {
+
+            }
+        }, new Action0() { // onCompleted에 해당
+            @Override
+            public void call() {
+
             }
         });
     }
