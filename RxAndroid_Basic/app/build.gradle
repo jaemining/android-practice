@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId "com.jaemin.android.rxandroid_basic"
         minSdkVersion 15
@@ -10,7 +10,19 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // java 8 사용 설정
+        jackOptions {
+            enabled true
+        }
     }
+
+    // java 8 사용 설정
+    compileOptions {
+        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_8
+        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -25,5 +37,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.2.1'
+
+    // RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+
     testCompile 'junit:junit:4.12'
 }
