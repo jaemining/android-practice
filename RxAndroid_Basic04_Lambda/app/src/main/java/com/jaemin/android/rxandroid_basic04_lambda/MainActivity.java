@@ -95,4 +95,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         () -> adapter.notifyDataSetChanged()
                 );
     }
+
+    public void doZip() {
+        Observable.zip(
+                Observable.just("Jaemin"),
+                Observable.just("Image.jpg"),
+                (item1, item2) -> "Name : " + item1 + ", Profile image : " + item2
+        ).subscribe(
+                zipped -> Log.w("zip", "onNext item = " + zipped)
+        );
+    }
 }
