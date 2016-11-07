@@ -1,4 +1,4 @@
-package com.jaemin.android.chattingapp;
+package kr.co.fastcampus.android.chat;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
