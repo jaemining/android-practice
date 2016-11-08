@@ -1,4 +1,4 @@
-package chat.android.fastcampus.co.kr.zigbang;
+package jaemin.android.com.zigbang;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("chat.android.fastcampus.co.kr.zigbang", appContext.getPackageName());
+        assertEquals("jaemin.android.com.zigbang", appContext.getPackageName());
     }
 }

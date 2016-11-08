@@ -1,4 +1,4 @@
-package chat.android.fastcampus.co.kr.zigbang;
+package jaemin.android.com.zigbang;
 
 import org.junit.Test;
 
