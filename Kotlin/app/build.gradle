@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 23
@@ -26,4 +27,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.2.1'
     testCompile 'junit:junit:4.12'
+
+    // Kotlin
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.4'
 }
