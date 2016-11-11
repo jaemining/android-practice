@@ -37,13 +37,17 @@ public class IntroActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.M)
     private void checkPermissions() {
         if(checkSelfPermission( Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                || checkSelfPermission( Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                || checkSelfPermission( Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                || checkSelfPermission( Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || checkSelfPermission( Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             // 쓰기권한이 없으면 로직 처리
             // 중간에 권한 내용에 대한 알림을 처리하는 함수
             // shouldShowRequestPermissionRationale()
 
             String permissionArray[] = { Manifest.permission.ACCESS_FINE_LOCATION      // GPS 위성
-                    , Manifest.permission.ACCESS_COARSE_LOCATION}; // GPS 기지국
+                    , Manifest.permission.ACCESS_COARSE_LOCATION    // GPS 기지국
+                    , Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    , Manifest.permission.CAMERA};
             requestPermissions( permissionArray , REQUEST_CODE );
 
         }else{
@@ -60,7 +64,9 @@ public class IntroActivity extends AppCompatActivity {
         switch(requestCode) {
             case REQUEST_CODE:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[2] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[3] == PackageManager.PERMISSION_GRANTED) {
                     loadMain();
                 }
                 break;
